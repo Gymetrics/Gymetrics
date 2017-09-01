@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Prototype</title>
+    <style>
+        .channel {
+            border: 2px solid black;
+            height: 100px;
+            width: 500px;
+            padding: 20px 20px;
+        }
+    </style>
+</head>
+<body>
+
+{% for stream in streams %}
+
+<div class="channel" data-stream="{{ stream.name|escape }}">
+    <h3>Channel: {{ stream.name }}</h3>
+    <p>Status: {{ stream.status }}</p>
+    <p>Live: {{ stream.live }} </p>
+</div>
+
+{% endfor %}
+
+<script>
+    
+    var socket = new WebSocket('ws://' + window.location.host + '/streams/');
+
+    socket.onopen = function open() {
+        console.log("WebSocket connection created");
+    }
+
+    socket.onmessage = function message (event) {
+
+
+        console.log("Received data...")
+        var data = JSON.parse(event.data);
+        
+        if (data['accept']){ 
+            console.log("Connected");
+            return 
+        };
+
+        var stream = data['name'];
+        var stream_tag = $('div').filter(function(){
+            return $(this).data('stream') == stream;
+        });
+
+        console.log(stream_tag)
+        if (data['live']) {
+            stream_tag.children()[1].innerHTML = "Live : " + data['live']
+            stream_tag.children()[2].innerHTML = "Status : " + data['status'];
+        } else {
+            
+        }    
+    }
+
+
+    if (socket.readyState == WebSocket.OPEN) {
+        socket.onopen();
+    }
+
+</script>
+</body>
+</html>

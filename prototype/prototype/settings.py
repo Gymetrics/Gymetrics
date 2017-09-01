@@ -51,7 +51,6 @@ CHANNEL_LAYERS = {
                 "hosts": [(redis_host, 6379)]
             },
             "ROUTING": "prototype.routing.channel_routing",
-
         },
 
 }
