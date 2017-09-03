@@ -7,5 +7,5 @@ def ws_connect(message):
     Group('streams').add(message.reply_channel)
 
 def ws_disconnect(message):
-    Group('users').discard(message.reply_channel)
+    Group('streams').discard(message.reply_channel)
 

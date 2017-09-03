@@ -34,27 +34,17 @@
 
     socket.onmessage = function message (event) {
 
-
         console.log("Received data...")
         var data = JSON.parse(event.data);
-        
-        if (data['accept']){ 
-            console.log("Connected");
-            return 
-        };
 
         var stream = data['name'];
         var stream_tag = $('div').filter(function(){
             return $(this).data('stream') == stream;
         });
 
-        console.log(stream_tag)
-        if (data['live']) {
-            stream_tag.children()[1].innerHTML = "Live : " + data['live']
-            stream_tag.children()[2].innerHTML = "Status : " + data['status'];
-        } else {
-            
-        }    
+        stream_tag.children()[1].innerHTML = "Status: " + data['status'];
+        stream_tag.children()[2].innerHTML = "Live: " + data['live']
+  
     }
 
 
