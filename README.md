@@ -15,7 +15,7 @@ with endpoints created by Django REST framework.
 3. Install all dependancies found in the requirements.txt. From terminal, run ``pip install -r requirements.txt``
 4. Go into the prototype directory: ``cd prototype`` 
 4. Migrate: ``python manage.py migrate``
-5. Populate the database with some broadcasting channels: ``python populate_db.py``
+5. Populate the database with some broadcasting channels: ``python manage.py populate_db``
 5. Run the server: ``python manage.py runserver``
 
 # References 
