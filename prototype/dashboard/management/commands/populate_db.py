@@ -26,7 +26,7 @@ class Command(BaseCommand):
         )
 
         mtv = Stream(
-            name="ITV 1",
+            name="MTV",
             status="r",
             live=True
         )
