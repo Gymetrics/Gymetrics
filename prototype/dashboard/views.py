@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Stream 
-from .serializers import StreamSerializer
+from .models import Gym 
+from .serializers import GymSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -19,22 +19,22 @@ def ws_update_stream(data):
 
 def index(request):
 
-    streams = Stream.objects.all()
-    context = {'streams': streams}
+    gyms = Gym.objects.all()
+    context = {'gyms': gyms}
 
     return render(request, 'dashboard/index.html', context)
 
 
 @api_view(['GET', 'POST','PUT'])
-def api_stream_view(request):
+def api_update_gym(request):
 
     if request.method == "GET": 
-        streams = Stream.objects.all()
-        serializer = StreamSerializer(streams, many=True)
+        gym = Gym.objects.get(location_name="Sky Gym")
+        serializer = GymSerializer(gym)
         return Response(serializer.data)
 
     if request.method == "POST": 
-        serializer = StreamSerializer(data=request.data)
+        serializer = GymSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED, content_type="application/json")
@@ -43,11 +43,11 @@ def api_stream_view(request):
     if request.method == "PUT":
         
         try:
-            stream = Stream.objects.get(name=request.data['name'])
-        except Stream.DoesNotExist:
+            gym = Gym.objects.get(location_name=request.data['location_name'])
+        except Gym.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)        
 
-        serializer = StreamSerializer(stream, data=request.data)
+        serializer = GymSerializer(gym, data=request.data)
         if serializer.is_valid():
             serializer.save()
 

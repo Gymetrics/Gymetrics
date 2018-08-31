@@ -1,7 +1,7 @@
 from django.conf.urls import url 
-from .views import index, api_stream_view
+from .views import index, api_update_gym
 
 urlpatterns = [
     url(r'^channels/', index, name='home'), 
-    url(r'^api/stream', api_stream_view, name="api_stream"),
+    url(r'^api/gym', api_update_gym, name="api_stream"),
 ]

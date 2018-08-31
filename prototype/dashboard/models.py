@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class Stream(models.Model):
+class Gym(models.Model):
 
-    name = models.CharField(max_length=250)
-    status = models.CharField(max_length=250)
-    live = models.BooleanField(default=False)
+    location_name = models.CharField(max_length=250)
+    number_of_people = models.IntegerField()
+    capacity = models.IntegerField()
+    image = models.CharField(max_length=250)
 
     def __str__(self):
-        return "{}".format(self.name)
-
+        return "{}".format(self.location_name)
     

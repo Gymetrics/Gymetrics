@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Stream
+from .models import Gym
 # Register your models here.
 
 
-class StreamAdmin(admin.ModelAdmin):
-    list_display = ['name', 'status','live']
+class GymAdmin(admin.ModelAdmin):
+    list_display = ['location_name', 'number_of_people','capacity']
 
 
-admin.site.register(Stream, StreamAdmin)
+admin.site.register(Gym, GymAdmin)
