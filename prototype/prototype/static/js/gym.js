@@ -66,9 +66,6 @@ class Component extends React.Component {
                   <img src={data.image} style={imgStyle}/>
                   <span className="card-title">{data.location_name}</span>
                 </div>
-                <div className="card-content">
-                <p>Users: {data.number_of_people}/{data.capacity}</p>
-                </div>
               </div>
             </div>
         )

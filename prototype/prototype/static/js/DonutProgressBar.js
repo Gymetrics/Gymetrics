@@ -48,7 +48,12 @@ var gaugeOptions = {
         borderWidth: 0,
         useHTML: true
       }
-    }
+    },
+    series: {
+            animation: {
+                duration: 0.5
+            }
+        }
   }
 };
 

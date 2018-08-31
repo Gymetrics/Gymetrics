@@ -11,6 +11,7 @@ django-cors-headers==2.4.0
 djangorestframework==3.6.4
 hyperlink==17.3.1
 incremental==17.5.0
+kafka-python==1.4.3
 msgpack-python==0.4.8
 pytz==2017.2
 redis==2.10.6
