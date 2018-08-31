@@ -64,7 +64,7 @@ class Component extends React.Component {
               <div className="card">
                 <div className="card-image">
                   <img src={data.image} style={imgStyle}/>
-                  <span className="card-title">{data.location_name}</span>
+                  <span className="card-title"><font size="15">{data.location_name}</font></span>
                 </div>
               </div>
             </div>
